@@ -3,12 +3,13 @@ import { CameraView, useCameraPermissions } from "expo-camera";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { Button, useTheme } from "react-native-paper";
+import { Button } from "react-native-paper";
 
+
+const CAMERA_DIMENSIONS = { height: 280 , width: 280 };
 
 export function CameraBox() {
   const router = useRouter();
-  const theme = useTheme();
   const { t } = useTranslationContext();
   const [permission, requestPermission] = useCameraPermissions();
   const [scannerActive, setScannerActive] = useState(false);
@@ -17,15 +18,10 @@ export function CameraBox() {
 
   useEffect(() => {
     if (permission && !permission.granted) {
-      // Camera permissions are not granted yet.
       requestPermission();
   }
-  }, [permission])
+  }, [permission]);
 
-  // if (!permission) {
-  //   // Camera permissions are still loading.
-  //   return <Loader />
-  // }
 
   return (
     <View>
@@ -39,20 +35,19 @@ export function CameraBox() {
           onBarcodeScanned={(barcode) => {
             if (scannerActive && barcode.type === "ean13") {
               setBoundingBox(barcode.bounds);
-              // setScannerActive(false);
-              // router.navigate({ pathname: "/(tabs)/rental/details", params: { barcode: barcode.data } })
+              router.navigate({ pathname: "/(tabs)/rental/details", params: { barcode: barcode.data } });
             }
           }}
         />
 
         {
-          (scannerActive) &&
+          (boundingBox.origin.x !== 0 && boundingBox.origin.y !== 0) &&
           <View style={{ 
             position: "absolute", 
             borderWidth: 2,  
             borderColor: "red", 
             top: boundingBox.origin.x - boundingBox.size.width, 
-            left: 280 - boundingBox.origin.y - boundingBox.size.height,
+            left: CAMERA_DIMENSIONS["width"] - boundingBox.origin.y - boundingBox.size.height,
             height: boundingBox.size.width,
             width: boundingBox.size.height, 
           }}>
@@ -81,8 +76,8 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   camera: {
-    height: 280,
-    width: 280,
+    height: CAMERA_DIMENSIONS["height"],
+    width: CAMERA_DIMENSIONS["width"],
   },
   button: {
     marginTop: 20

@@ -1,9 +1,20 @@
 import { CameraBox } from '@/components/CameraBox';
+import { useFocusEffect } from 'expo-router';
+import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 export default function RentalPage() {
+  const [key, setKey] = useState(0);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      setKey(prev => prev + 1)
+      return () => {};
+    }, [])
+  );
+
   return (
-    <View style={styles.container}>
+    <View key={key} style={styles.container}>
       <CameraBox />
     </View>
   );
