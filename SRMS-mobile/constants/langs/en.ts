@@ -8,10 +8,25 @@ export const en = {
     "scannerOn": "Scanner ON",
     "scannerOff": "Scanner OFF",
 
-    "banner": {
-      "message": "Scanned client card barcode",
-      "button": "Close",
-    },
+    "details": {
+      "banner": {
+        "message": "Scanned client card barcode",
+        "button.details": "Details",
+      },
+
+      "table": {
+        "column.number": "No.",
+        "column.name": "Name",
+        "column.barcode": "Barcode",
+        "columns.charge": "Charge [PLN]",
+        "columns.time": "Time [min]",
+      },
+
+      "button.cancel": "Cancel",
+      "button.start": "Start rental",
+      "button.scan": "Scan",
+    }
+
   },
 
   "return": {

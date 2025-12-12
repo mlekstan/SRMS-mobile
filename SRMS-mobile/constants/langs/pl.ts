@@ -10,10 +10,25 @@ export const pl: LangDictType = {
     "scannerOn": "Włącz skaner",
     "scannerOff": "Wyłącz skaner",
 
-    "banner": {
-      "message": "Zeskanowany kod kreskowy karty klienta",
-      "button": "Zamknij",
-    },
+    "details": {
+      "banner": {
+        "message": "Zeskanowany kod kreskowy karty klienta",
+        "button.details": "Szczegóły",
+      },
+
+      "table": {
+        "column.number": "Lp.",
+        "column.name": "Nazwa",
+        "column.barcode": "Kod",
+        "columns.charge": "Zapłata [PLN]",
+        "columns.time": "Czas [min]",
+      },
+      
+      "button.cancel": "Anuluj",
+      "button.start": "Wypożycz",
+      "button.scan": "Skanuj"
+    }
+
   },
 
   "return": {
