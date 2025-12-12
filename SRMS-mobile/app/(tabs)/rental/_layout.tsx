@@ -1,24 +1,27 @@
-import { useTranslationContext } from "@/hooks/useTranslationContext";
-import { Stack, useRouter } from "expo-router";
-import { useTheme } from "react-native-paper";
+import { RentalTableDataProvider } from "@/components/rental/details/RentalTableDataProvider";
+import { Stack } from "expo-router";
 
 
 export default function RentalLayout() {
-  const router = useRouter();
-  const theme = useTheme();
-  const { t } = useTranslationContext();
 
   return (
-    <Stack>
-      <Stack.Screen 
-        name="index"
-        options={{ headerShown: false }}
-      />
+    <RentalTableDataProvider>
+      <Stack>
+        <Stack.Screen 
+          name="index"
+          options={{ headerShown: false }}
+        />
 
-      <Stack.Screen 
-        name="details"
-        options={{ headerShown: false }}
-      />
-    </Stack>
+        <Stack.Screen 
+          name="details"
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="scan-item"
+          options={{ headerShown: false }}
+        />
+      </Stack>
+    </RentalTableDataProvider>
   );
 }

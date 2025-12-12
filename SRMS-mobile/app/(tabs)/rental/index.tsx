@@ -1,4 +1,4 @@
-import { CameraBox } from '@/components/CameraBox';
+import { ScannerView } from '@/components/ScannerView';
 import { useFocusEffect } from 'expo-router';
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -15,7 +15,7 @@ export default function RentalPage() {
 
   return (
     <View key={key} style={styles.container}>
-      <CameraBox />
+      <ScannerView />
     </View>
   );
 }
