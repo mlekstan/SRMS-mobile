@@ -16,3 +16,21 @@ export type User = {
     name: string;
   };
 }
+
+export type Item = {
+  id: number;
+  name: string;
+  shortName: string;
+  barcode: string;
+  marketValue: string;
+  forSale: boolean;
+  sellPrice: string;
+  subcategory: {
+    id: number;
+    name: string;
+  };
+  branch: {
+    id: number;
+    name: string;
+  };
+}
