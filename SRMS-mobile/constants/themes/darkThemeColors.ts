@@ -1,7 +1,7 @@
 export const darkThemeColors = {
   "colors": {
     "primary": "rgb(10, 33, 23)",
-    "onPrimary": "rgb(0, 56, 37)",
+    "onPrimary": "rgb(255, 255, 255)",
     "primaryContainer": "rgb(0, 81, 55)",
     "onPrimaryContainer": "rgb(138, 248, 197)",
     "secondary": "rgb(180, 204, 189)",

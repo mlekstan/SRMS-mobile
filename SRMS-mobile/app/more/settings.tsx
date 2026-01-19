@@ -4,6 +4,7 @@ import SettingsList from "@/components/settings/SettingsList";
 import { useThemeMode } from "@/hooks/useThemeMode";
 import { useTranslationContext } from "@/hooks/useTranslationContext";
 import React, { useMemo, useState } from "react";
+import { useTheme } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 type Modals = "theme" | "lang" | null;
@@ -20,6 +21,7 @@ function renderModal(activeModal: Modals, setActiveMode: (m: Modals) => void) {
 
 export default function SettingsPage() {
   const { themeMode } = useThemeMode();
+  const theme = useTheme();
   const { t, lang } = useTranslationContext();
   const [activeModal, setActiveModal] = useState<Modals>(null);
 
@@ -60,7 +62,7 @@ export default function SettingsPage() {
 
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ backgroundColor: theme.colors.background, flex: 1 }}>
       <SettingsList settingsList={settingsList} />
       { renderModal(activeModal, setActiveModal) }
     </SafeAreaView>

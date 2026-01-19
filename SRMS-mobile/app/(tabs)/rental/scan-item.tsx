@@ -44,12 +44,15 @@ export default function ScanItemPage() {
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <ScannerBox
-        active={!isError}
-        afterScan={barcode => setBarcode(barcode)}
-        barcodeTypes={["ean8"]}
-        dims={{ height: 280, width: 280 }}
-      />
+      {
+        (!isFetching && !isError) &&
+        <ScannerBox
+          active={!isError}
+          afterScan={barcode => setBarcode(barcode)}
+          barcodeTypes={["ean8"]}
+          dims={{ height: 280, width: 280 }}
+        />
+      }
 
       {
         (isFetching) && 

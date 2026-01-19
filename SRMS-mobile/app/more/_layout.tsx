@@ -27,7 +27,7 @@ export function MoreStack() {
           ),
           headerStyle: {
             backgroundColor: theme.colors.primary
-          }
+          },
         }}
       />
 

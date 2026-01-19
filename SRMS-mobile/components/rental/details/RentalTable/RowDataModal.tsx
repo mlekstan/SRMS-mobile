@@ -71,7 +71,7 @@ function useItemsList(data: RentalTableDataType) {
       },
       {
         title: t("rental.details.table.columns.time"),
-        description: data.rentalLength.minutes
+        description: data.rentalLength
       }, 
     ]
   ), [data]);

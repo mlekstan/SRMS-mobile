@@ -21,7 +21,7 @@ export default function Login() {
         <Image 
           style={styles.image}
           contentFit="contain"
-          source={require("@/assets/images/HEXAL_logo.svg")}
+          source={require("@/assets/images/HEXAL_logo_X.svg")}
         />      
       </View>
 
@@ -51,11 +51,11 @@ const styles = StyleSheet.create({
     height: "100%"
   },
   text: {
-    paddingTop: 50, 
-    paddingBottom: 50, 
+    paddingTop: 20, 
+    paddingBottom: 40, 
     textAlign: "center"
   },
   image: {
-    height: 52
+    height: 110
   }
 });

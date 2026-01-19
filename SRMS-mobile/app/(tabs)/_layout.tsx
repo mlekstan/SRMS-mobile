@@ -65,7 +65,7 @@ export default function TabLayout() {
         options={{
           title: t("rental.header"),
           tabBarIcon: ({ color }) => (
-            <Icon source="clock-end" color={color} size={24} />
+            <Icon source="clock-start" color={color} size={24} />
           ),
           headerTitleAlign: "center",
           headerTitleStyle: {

@@ -19,7 +19,7 @@ export const en = {
         "column.name": "Name",
         "column.barcode": "Barcode",
         "columns.charge": "Charge [PLN]",
-        "columns.time": "Time [min]",
+        "columns.time": "Time [dd hh:mm]",
       },
 
       "button.cancel": "Cancel",

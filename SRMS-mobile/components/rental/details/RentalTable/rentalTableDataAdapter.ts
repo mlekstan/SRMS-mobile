@@ -5,7 +5,7 @@ export type RentalTableDataType = {
   rowId: string;
   positionId: number;
   subcategoryId: number;
-  rentalLength: { minutes: number };
+  rentalLength: string;
   charge: number;
   name: string;
   item: Item | null;

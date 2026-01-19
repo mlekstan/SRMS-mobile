@@ -14,18 +14,16 @@ import { RowDataModal } from "./RowDataModal";
 
 
 export type RentalSalePosition = {
-  id: number,
-  numberOfItems: number,
-  rentalLength: {
-    minutes: number
-  },
-  charge: string,
-  surcharge: string,
+  id: number;
+  numberOfItems: number;
+  rentalLength: string;
+  charge: string;
+  surcharge: string;
   subcategory: {
-    id: number,
-    name: string
-  }
-}
+    id: number;
+    name: string;
+  };
+};
 
 export type RentalSale = {
   id: number;
@@ -35,7 +33,7 @@ export type RentalSale = {
   charge: string;
   surcharge: string;
   rentalSalePositions: RentalSalePosition[];
-}
+};
 
 
 export function RentalTable() {

@@ -21,7 +21,7 @@ export const pl: LangDictType = {
         "column.name": "Nazwa",
         "column.barcode": "Kod",
         "columns.charge": "Zapłata [PLN]",
-        "columns.time": "Czas [min]",
+        "columns.time": "Czas [dd hh:mm]",
       },
       
       "button.cancel": "Anuluj",
