@@ -16,9 +16,10 @@ export default function ScanItemPage() {
   const { t } = useTranslationContext();
   const [barcode, setBarcode] = useState<string | null>(null);
   const { rowId, subcategoryId } = useLocalSearchParams<{ rowId: string, subcategoryId: string }>();
-  const { setItemToRow } = useRentalTableData();
+  const { tableData, setItemToRow } = useRentalTableData();
+  const [error, setError] = useState<Error | null>(null);
 
-  const { data, isSuccess, isFetching, isError, error } = useQuery({ 
+  const { data, isSuccess, isFetching, isError, error: qError } = useQuery({ 
     queryKey: ["item", { barcode, free: "true" }], 
     queryFn: () => (
       apiClient.makeRequest<Item>(`/items/barcode/${barcode}`, {
@@ -30,22 +31,30 @@ export default function ScanItemPage() {
       })
     ),
     enabled: !!barcode,
-    retry: false,
-    staleTime: 0,
-    gcTime:0,
   });
 
   useEffect(() => {
+    setError(qError);
+  }, [qError])
+
+  useEffect(() => {
     if (barcode !== null && isSuccess && data) {
-      setItemToRow({[rowId]: data});
-      router.back();
+      const idx = tableData.findIndex(p => p.item?.id === data.id);
+      if (idx < 0) {
+        setItemToRow({[rowId]: data});
+        router.back();
+      }
+      else {
+        const error = new Error("This barcode is already assigned to other row");
+        setError(error);
+      }
     }
-  }, [barcode, isSuccess, data]);
+  }, [barcode, isSuccess, data, tableData]);
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       {
-        (!isFetching && !isError) &&
+        (!isFetching && !error) &&
         <ScannerBox
           active={!isError}
           afterScan={barcode => setBarcode(barcode)}
@@ -60,7 +69,7 @@ export default function ScanItemPage() {
       }
 
       {
-        (isError && error) &&
+        (error) &&
         <ErrorDialog
           messages={[error.message]}
           btnText={t("components.errorDialog.button")}

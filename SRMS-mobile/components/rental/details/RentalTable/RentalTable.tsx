@@ -11,51 +11,16 @@ import { useRentalTableData } from "../useRentalTableData";
 import { rentalTableColumns } from "./rental-table-columns";
 import { RentalTableDataType } from "./rentalTableDataAdapter";
 import { RowDataModal } from "./RowDataModal";
-
-
-export type RentalSalePosition = {
-  id: number;
-  numberOfItems: number;
-  rentalLength: string;
-  charge: string;
-  surcharge: string;
-  subcategory: {
-    id: number;
-    name: string;
-  };
-};
-
-export type RentalSale = {
-  id: number;
-  saleDate: string;
-  actionRequired: boolean;
-  chargePredicted: string;
-  charge: string;
-  surcharge: string;
-  rentalSalePositions: RentalSalePosition[];
-};
+import { RentalSale } from "@/api/types";
 
 
 export function RentalTable() {
   const { t } = useTranslationContext();
   const [modalData, setModalData] = useState<RentalTableDataType | null>(null);
-  const { barcode } = useLocalSearchParams<{ barcode: string }>();
-
-  const { data, error, isSuccess, isPending, isError } = useQuery({ 
-    queryKey: ["rentalPositions", barcode], 
-    queryFn: () => apiClient.makeRequest<RentalSale[]>("/rentalSales", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      searchParams: { barcode: barcode }
-    })
-  });
-
-  const { tableData } = useRentalTableData(data);
+  const { tableData } = useRentalTableData();
 
   const table = useReactTable({
-    data: tableData ?? Array<RentalTableDataType>(),
+    data: tableData,
     columns: rentalTableColumns,
     getCoreRowModel: getCoreRowModel(),
   });

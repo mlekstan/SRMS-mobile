@@ -16,6 +16,13 @@ export const pl: LangDictType = {
         "button.details": "Szczegóły",
       },
 
+      "modal": {
+        "title": "Wybierz pozycję sprzedaży wypożyczenia", 
+        "info": "Brak nieobsłużonych pozycji sprzedaży wypożyczenia dla tej karty.", 
+        "button.confirm": "Zatwierdź", 
+        "button.cancel": "Anuluj"
+      },
+
       "table": {
         "column.number": "Lp.",
         "column.name": "Nazwa",
@@ -32,7 +39,9 @@ export const pl: LangDictType = {
   },
 
   "return": {
-    "header": "Zwrot"
+    "header": "Zwrot", 
+    "scannerOn": "Włącz skaner",
+    "scannerOff": "Wyłącz skaner",
   },
 
   "more": {

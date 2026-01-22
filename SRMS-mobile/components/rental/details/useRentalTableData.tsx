@@ -1,9 +1,10 @@
 import { useContext, useEffect, useMemo } from "react";
-import { RentalSale } from "./RentalTable/RentalTable";
+
 import { RentalTableDataContext } from "./RentalTableDataProvider";
+import { RentalSale } from "@/api/types";
 
 
-export function useRentalTableData(rawData?: RentalSale[]) {
+export function useRentalTableData(rawData?: RentalSale) {
   const value = useContext(RentalTableDataContext);
   
   useEffect(() => {

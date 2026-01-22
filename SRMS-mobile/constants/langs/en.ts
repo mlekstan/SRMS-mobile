@@ -14,6 +14,13 @@ export const en = {
         "button.details": "Details",
       },
 
+      "modal": {
+        "title": "Select rental sale position",
+        "info": "There is no unprocessed rental sale positions for this card now.", 
+        "button.confirm": "Confirm", 
+        "button.cancel": "Cancel"
+      },
+
       "table": {
         "column.number": "No.",
         "column.name": "Name",
@@ -30,7 +37,9 @@ export const en = {
   },
 
   "return": {
-    "header": "Return"
+    "header": "Return", 
+    "scannerOn": "Scanner ON",
+    "scannerOff": "Scanner OFF",
   },
 
   "more": {

@@ -1,12 +1,11 @@
-import { Item } from "@/api/types";
+import { Item, RentalSale } from "@/api/types";
 import { createContext, PropsWithChildren, useEffect, useMemo, useReducer, useState } from "react";
-import { RentalSale } from "./RentalTable/RentalTable";
 import { rentalTableDataAdapter, RentalTableDataType } from "./RentalTable/rentalTableDataAdapter";
 
 
 export const RentalTableDataContext = createContext<{
   tableData: RentalTableDataType[];
-  setRawData: (rawData: RentalSale[]) => void;
+  setRawData: (rawData: RentalSale) => void;
   itemsToRows: Record<string, Item>[]; 
   setItemToRow: (itemToRow: Record<string, Item>) => void;
   isFull: boolean;
@@ -35,7 +34,7 @@ function reducer(state: Record<string, Item>[], action: Record<string, Item> | n
 export function RentalTableDataProvider({ children }: PropsWithChildren) {
   const [reset, setReset] = useState(false);
   const [itemsToRows, setItemToRow] = useReducer(reducer, Array<Record<string, Item>>());
-  const [rawData, setRawData] = useState<RentalSale[]>();
+  const [rawData, setRawData] = useState<RentalSale>();
 
   useEffect(() => {
     if (reset) {
@@ -46,7 +45,10 @@ export function RentalTableDataProvider({ children }: PropsWithChildren) {
   }, [reset]);
 
   const tableData = useMemo(() => {
-    const adaptedData = rawData ? rentalTableDataAdapter(rawData[0].rentalSalePositions) : Array<RentalTableDataType>();
+    if (!rawData) {
+      return Array<RentalTableDataType>();
+    }
+    const adaptedData = rentalTableDataAdapter(rawData.rentalSalePositions);
     const tableData = adaptedData.map((row) => {
       const itemToRow = itemsToRows.find((v) => row.rowId in v);
       
@@ -69,7 +71,7 @@ export function RentalTableDataProvider({ children }: PropsWithChildren) {
     <RentalTableDataContext.Provider 
       value={{ 
         tableData,
-        setRawData: (rawData: RentalSale[]) => setRawData(rawData),
+        setRawData: (rawData: RentalSale) => setRawData(rawData),
         itemsToRows, 
         setItemToRow: (itemToRow: Record<string, Item>) => setItemToRow(itemToRow),
         isFull,

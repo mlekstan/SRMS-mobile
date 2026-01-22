@@ -27,8 +27,6 @@ export function RentalView() {
     })
   });
 
-  console.log(tableData)
-
   return (
     <View style={{ flex: 1, padding: 25 }}>
       <Surface style={{ flex: 1, marginBottom: 25 }}>
@@ -46,7 +44,7 @@ export function RentalView() {
               }))
             });
             reset();
-            router.replace("/(tabs)/rental");
+            router.dismissAll();
           }}
         >
           { t("rental.details.button.start") }

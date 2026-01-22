@@ -1,5 +1,5 @@
-import { Item } from "@/api/types";
-import { RentalSalePosition } from "./RentalTable";
+import { Item, RentalSalePosition } from "@/api/types";
+
 
 export type RentalTableDataType = {
   rowId: string;
