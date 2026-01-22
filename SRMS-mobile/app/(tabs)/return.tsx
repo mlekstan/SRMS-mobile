@@ -1,11 +1,31 @@
-import { View } from "react-native";
+import { ReturnScannerView } from "@/components/ReturnScannerView";
+import { useFocusEffect } from "expo-router";
+import React from "react";
+import { useState } from "react";
+import { StyleSheet, View } from "react-native";
 
 
 export default function ReturnPage() {
+  const [key, setKey] = useState(0);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      setKey(prev => prev + 1)
+      return () => {};
+    }, [])
+  );
 
   return (
-    <View>
-      
+    <View key={key} style={styles.container}>
+      <ReturnScannerView />
     </View>
-  )
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
