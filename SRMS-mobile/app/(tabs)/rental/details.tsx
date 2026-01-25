@@ -18,7 +18,7 @@ export default function DetailsPage() {
   const { t } = useTranslationContext();
   const router = useRouter();
   const { barcode } = useLocalSearchParams<{ barcode: string }>();
-  const { data, isSuccess, isFetching, isPending, isError, error } = useQuery({ 
+  const { data, isFetching, isError, error } = useQuery({ 
     queryKey: ["rentalPositions", barcode], 
     queryFn: () => apiClient.makeRequest<RentalSale[]>("/rentalSales", {
       method: "GET",
@@ -33,24 +33,19 @@ export default function DetailsPage() {
   const [showModal, setShowModal] = useState(false);
   const { tableData } = useRentalTableData();
 
-  console.log("Rerender XD", tableData, "isFetching", isFetching, "isError", isError, showDialog, data, tableData)
-
   useEffect(() => {
-    console.log("Im common effect")
     setShowDialog(false);
     setShowModal(false);
   }, [barcode]);
 
   useEffect(() => {
     if (isError) {
-      console.log("Im error effect")
       setShowDialog(true);
     } 
   }, [isError]);
 
   useEffect(() => {
     if (tableData.length === 0) {
-      console.log("Im modal effect")
       setShowModal(true);
     }
   }, [tableData.length]);

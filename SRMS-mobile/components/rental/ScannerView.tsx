@@ -3,7 +3,7 @@ import { useRouter } from "expo-router";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Button } from "react-native-paper";
-import { ScannerBox } from "./ScannerBox";
+import { ScannerBox } from "../ScannerBox";
 
 
 export function ScannerView() {

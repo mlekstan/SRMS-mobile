@@ -1,4 +1,4 @@
-import { ScannerView } from '@/components/ScannerView';
+import { ScannerView } from '@/components/rental/ScannerView';
 import { useFocusEffect } from 'expo-router';
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';

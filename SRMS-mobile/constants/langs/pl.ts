@@ -41,7 +41,16 @@ export const pl: LangDictType = {
   "return": {
     "header": "Zwrot", 
     "scannerOn": "Włącz skaner",
-    "scannerOff": "Wyłącz skaner",
+    "scannerOff": "Wyłącz skaner", 
+    "modal": {
+      "barcode": "Kod kreskowy", 
+      "name": "Nazwa", 
+      "start": "Data rozpoczęcia", 
+      "endPredicted": "Przewidywana data końca", 
+      "leftTime": "Pozostały czas",
+      "button.return": "Zwrot", 
+      "button.cancel": "Anuluj"
+    }
   },
 
   "more": {

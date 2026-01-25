@@ -1,7 +1,6 @@
-import { ReturnScannerView } from "@/components/ReturnScannerView";
+import { ReturnScannerView } from "@/components/return/ReturnScannerView";
 import { useFocusEffect } from "expo-router";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 

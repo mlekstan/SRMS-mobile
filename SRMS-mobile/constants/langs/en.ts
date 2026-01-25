@@ -39,7 +39,16 @@ export const en = {
   "return": {
     "header": "Return", 
     "scannerOn": "Scanner ON",
-    "scannerOff": "Scanner OFF",
+    "scannerOff": "Scanner OFF", 
+    "modal": {
+      "barcode": "Barcode", 
+      "name": "Name", 
+      "start": "Start date", 
+      "endPredicted": "Predicted end date", 
+      "leftTime": "Left time",
+      "button.return": "Return", 
+      "button.cancel": "Cancel"
+    }
   },
 
   "more": {

@@ -56,3 +56,21 @@ export type RentalSale = {
   surcharge: string;
   rentalSalePositions: RentalSalePosition[];
 };
+
+export type RentedItem = {
+  id: number;
+  start: string;
+  endPredicted: string;
+  end: string;
+  item: {
+    id: number;
+    name: string;
+    shortName: string | null;
+    barcode: string;
+    marketValue: string | null;
+    forSale: boolean;
+    sellPrice: string | null;
+    status: number;
+  };
+  leftTime: string;
+};
